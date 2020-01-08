@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+      {%block content%}
+      <div class="card testimonial-card mr-3 mb-3 ml-3">
+        <div class="card-up indigo lighten-1"></div>
+        <div class="card-body">
+          <h4 class="card-title">{{alumni.Name}}</h4>
+                  <img src="{{ alumni.Image.url }}" style="height: 150px;width: 200px"> 
+          <hr>
+          <h6>
+               <p class="post-meta">
+                  College - {{alumni.College}}
+              </p >
+              <p class="post-meta">Joining Year - {{alumni.Year_Joined}}</p>
+              <p class="post-meta">Branch - {{alumni.Branch}}</p>
+            </h6>
+        <div >
+        <div>
+          <h4>Contacts</h4>
+          <h6>Email: {{alumni.Email}}</h6>
+          <h6>Contact Number: {{alumni.Contact}}</h6>
+        </div>  
+          <h4>About:</h4>
+         <h6>{{alumni.About|safe|linebreaks}}</h6>
+        </div>
+        <div >
+          <h4>Work:</h4>
+         <h6>{{alumni.Work|safe|linebreaks}}</h6>  
+        </div>
+
+     {% if request.user.is_authenticated %}   
+        {% if alumni.Verified %}
+           <div style="color:blue;font-size: 20px">Verfied!</div>
+        {%else%}   
+            <div >
+                <button class="btn btn-outline-info"><a href="{% url 'alumni-authentication' alumni.id %}">Authenticate</a></button>
+            </div>
+            {%endif%}
+      {% endif %}    
+</div>
+          </div>
+      </div>
+    </div>
+            </div>
+
+  {%endblock%}
+  
