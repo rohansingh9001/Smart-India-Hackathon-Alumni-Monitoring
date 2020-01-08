@@ -1,5 +1,7 @@
 # Smart-India-Hackathon-Alumni-Tracker                         
                                          
-#Requirements                    
-Python – 3.7                              
-Django – 3.0.2                  
+# Requirements                    
+Python â€“ 3.7                              
+Django â€“ 3.0.2              
+crispy_forms                                
+allauth                  
