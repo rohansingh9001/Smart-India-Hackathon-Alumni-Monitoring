@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 {%load static%}
+{% load crispy_forms_tags %}
 {% block content %} 
+
+<div class="container">
+
+    <form method="get">
+    {{ filter.form|crispy }}
+    <button type="submit">Search</button>
+  </form>
+</div>
+<hr><hr>
  <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-    {% for p in alumnis %}
+    {% for p in filter.qs %}
     {% if p.Verified %}
     <a href="{% url 'alumni-detail' p.id %}" style="color: black">
       <div class="card testimonial-card float-left mr-3 mb-3 ml-3">

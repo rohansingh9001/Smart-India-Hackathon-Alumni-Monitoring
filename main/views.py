@@ -11,8 +11,10 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.views.generic import View,UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from .filters import AlumniFilter
 from django.urls import reverse_lazy
+
+
 def home(request):
 	return render(request,'home.html')
 
@@ -25,13 +27,11 @@ class AddAlumniView(CreateView):
         form.instance.Verified = False
         return super().form_valid(form)
 
-class AlumniListView(ListView):
-    queryset = AlumniDetailModel.objects.filter(Verified=True)
-    template_name = 'showalumni.html'
-    context_object_name = 'alumnis'
-    ordering = ['Year_Joined']
-    paginate_by = 12        
-
+def AlumniListView(request):
+    total = AlumniDetailModel.objects.all()
+    alfilter = AlumniFilter(request.GET, queryset=total)
+    template_name = 'showalumni.html'        
+    return render(request,template_name,{'filter':alfilter})
 class AlumniDetailView(View):
     def get(self,request,*args, **kwargs):
         alumni = get_object_or_404(AlumniDetailModel,pk=kwargs['pk'])
