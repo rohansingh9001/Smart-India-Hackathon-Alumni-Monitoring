@@ -1,6 +1,6 @@
 ﻿# Smart-India-Hackathon-Alumni-Tracker    
  
-##Instructions - 
+## Instructions - 
   
   ### Setting up the dependencies.
   To set up the server as a local host, clone the repository on your computer.
