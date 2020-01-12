@@ -8,7 +8,7 @@
   
   Install the dependencies in requirements and install the following repositories using python package manager PyPi or "pip"
   
-  Alternatively with python installed and added to path you can execute the RUN.bat batch file for windows.
+  Alternatively with python installed and added to path you can execute the RUNSERVER.bat batch file for windows.
   This will install all the libraries and set up the server.
   
   ### Starting the server.
@@ -17,7 +17,8 @@
   Use the address - 127.0.0.1:8000 
   to use the website.
   
-  When using the RUN.bat file, the webpage will automatically be opened for you on your default browser. 
+  Alternatively,
+  Execute the RUNBROWSER.bat file and the website will be opened for you on your default browser.
                                          
 ### Requirements                    
 Python – 3.7                              
