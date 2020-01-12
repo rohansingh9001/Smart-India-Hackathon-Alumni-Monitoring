@@ -33,4 +33,10 @@ crispy_forms
 Django-filters  
 pillow library
 
-
+### Authors
+1) Tarun Tomar
+2) Rohan Singh
+3) Saptashrungi Birajdar
+4) Ved Thakur
+5) Umang Sonika
+6) Samarth Potdar
