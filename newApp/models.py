@@ -14,7 +14,7 @@ COLLEGE_CHOICES = (
 )
 
 class User(AbstractUser):
-    #is_alumni = models.BooleanField(default=False)
+    is_alumni = models.BooleanField(default=False)
     is_college = models.BooleanField(default=False)
     College=models.CharField(max_length=80,choices=COLLEGE_CHOICES,default="None")
     About=models.TextField(max_length=200)
