@@ -18,7 +18,13 @@
   to use the website.
   
   Alternatively,
+  RUNSERVER file automatically starts the server for you.
   Execute the RUNBROWSER.bat file and the website will be opened for you on your default browser.
+  
+  ### Running order to start the websites (For non-experienced users)
+    execute RUNSERVER.bat 
+    once the server is set up,
+    execute RUNBROWSER.bat
                                          
 ### Requirements                    
 Python – 3.7                              
