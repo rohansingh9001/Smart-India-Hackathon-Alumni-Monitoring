@@ -1,145 +1,177 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+  <meta charset="utf-8">
+  <title>Alumni Tracker</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'home/css/custom-responsive-style.css' %}">
-    
-    <title>AlumniTracker</title>
-  
-  </head>
+  <link href="{% static 'base/img/favicon.jpg'%} " rel="icon">
+  <link href="{% static 'base/img/apple-touch-icon.jpg' %}" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+
+  <link href="{%static 'base/lib/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+  <link href="{% static 'base/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'base/lib/animate/animate.min.css'%}" rel="stylesheet">
+  <link href="{% static 'base/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'base/lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
+  <link href="{% static 'lib/lightbox/css/lightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'base/css/style.css'%}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+</head>
  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
   <header>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <a class="navbar-brand" href="#">AlumniTracker</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Feature A</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Colleges</a>
-	      </li>	      
-	      <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Alumni
-	        </a>
-	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="{% url 'add-alumni' %}">Register Yourself</a>
-	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="{% url 'show-alumni' %}">Alumni Page</a>
-	        </div>
-	      </li>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Feature A</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Colleges</a>
+        </li >   
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'show-alumni' %}">Alumni</a>
+        </li>          
 	      {% if request.user.is_authenticated %}
 	      <li class="nav-item">
-	        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-	      </li>	    
+	        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+	      </li>	  
+        {%if request.user.is_alumni %}
 	      <li class="nav-item">
-	        <a class="nav-link" href="{% url 'pending-query' %}">Pending Queries</a>
-	      </li>	        
+	        <a  class="nav-link" href="{% url 'alumni-profile' %}">Profile</a>
+	      </li>
+        {%else%}
+        <li class="nav-item">
+          <a  class="nav-link" href="{% url 'pending-query' %}">Pending Queries</a>
+        </li>        
+        {%endif%}	                
 	      {% else %}
+
 	      <li class="nav-item">
-	        <a class="nav-link" href="{% url 'account_login' %}">College-Login</a>
-	      </li>		            
+	        <a  class="nav-link" href="{% url 'login' %}">Login</a>
+	      </li>		
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'alumni_signup' %}">Alumni-Signup</a>
+	      </li>		    
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'college_signup' %}">College-Signup</a>
+	      </li>		                    
 	      {% endif %}
 	    </ul>
 	  </div>
 	</nav>  	
 </header>
-
-<br><br>
-
-
-<div class="container">
-
+  <div>
     {% block content %}
-
-
 
     {% endblock %}
 
+    </div>
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>Remember</h3>
+            <p>Remeber is a place where you can connect with your seniors. Havetea with them, revive your old memories and the fun you had in the college. And not forgetting, taunting the faculty</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              IIT Jodhpur<br>
+              Nagaur Road, Karwad, Jodhpur<br>
+              Rajasthan, India <br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> tarun_tomar@gmail.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Remember</strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- #footer -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</div>
-<!-- Footer -->
-<footer class="page-footer font-small unique-color-dark">
 
-  
-  <div class="container text-center text-md-left mt-5">
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/superfish/hoverIntent.js"></script>
+  <script src="lib/superfish/superfish.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
 
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
 
-    <div class="row mt-3">
-
-
-      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-        <h6 class="text-uppercase font-weight-bold">Company name</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut.</p>
-
-      </div>
- 
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <a href="#!">Your Account</a>
-        </p>
-        <p>
-          <a href="#!">Become an Affiliate</a>
-        </p>
-        <p>
-          <a href="#!">Shipping Rates</a>
-        </p>
-        <p>
-          <a href="#!">Help</a>
-        </p>
-
-      </div>
-
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-
-        <h6 class="text-uppercase font-weight-bold">Contact</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          IIT Jodhpur</p>
-        <p>
-          tomartarun2001@gmail.com</p>
-        <p>
-         8959350440</p>
-        <p>
-         9352280902</p>
-
-      </div>
-
-    </div>
-
-  </div>
-  <div class="footer-copyright text-center py-3">Tarun_Tomar_122 © 2020 Copyright
-  </div>
-
-</footer>
-
-</div>
-  </body>
-
+</body>
 
 </html>

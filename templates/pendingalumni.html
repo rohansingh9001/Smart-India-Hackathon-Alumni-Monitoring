@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {%load static%}
 {% block content %} 
+
+{% if alumnis %}
  <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
     {% for p in alumnis %}
@@ -11,7 +13,7 @@
           <img src="{{ p.Image.url }}" style="height: 150px;width: 200px"> 
         </div>
         <div class="card-body">
-          <h4 class="card-title">{{p.Name}}</h4>
+          <h4 class="card-title">{{p.username}}</h4>
           <hr>
                <p class="post-meta">
                   College - {{p.College}}
@@ -22,6 +24,13 @@
         </div>
       </a>
     {%endfor%} 
+{%else%}
+<div class="container">
+<div style="margin:150px">
+ <h3>No Pending Alumni Queries!</h3>
+</div> 
+</div> 
+{%endif%}    
           
     {% if is_paginated %}
 

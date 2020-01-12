@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+<div class="container" >
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <h2>Log In</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Log In</button>
+      </form>
+    </div>
+  </div>
+  </div>
+  <br>
+  <br>
+{% endblock %}
+
