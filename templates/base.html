@@ -24,7 +24,7 @@
   <link href="{% static 'base/lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
   <link href="{% static 'lib/lightbox/css/lightbox.min.css'%}" rel="stylesheet">
   <link href="{% static 'base/css/style.css'%}" rel="stylesheet">
-
+  <link href="{% static 'base/header/templatemo_style.css' %}" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
@@ -32,48 +32,50 @@
  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
   <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+  <nav>
+  <div id="templatemo_menu_panel">
+    <div id="templatemo_menu_section">  
+      <ul>
+        <li >
+          <a href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Feature A</a>
+        <li >
+          <a href="#">Feature A</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Colleges</a>
+        <li>
+          <a href="#">Colleges</a>
         </li >   
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'show-alumni' %}">Alumni</a>
+        <li>
+          <a href="{% url 'show-alumni' %}">Alumni</a>
         </li>          
 	      {% if request.user.is_authenticated %}
-	      <li class="nav-item">
-	        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+	      <li>
+	        <a href="{% url 'logout' %}">Logout</a>
 	      </li>	  
         {%if request.user.is_alumni %}
-	      <li class="nav-item">
-	        <a  class="nav-link" href="{% url 'alumni-profile' %}">Profile</a>
+	      <li>
+	        <a  href="{% url 'alumni-profile' %}">Profile</a>
 	      </li>
         {%else%}
-        <li class="nav-item">
-          <a  class="nav-link" href="{% url 'pending-query' %}">Pending Queries</a>
+        <li >
+          <a   href="{% url 'pending-query' %}">Pending Queries</a>
         </li>        
         {%endif%}	                
 	      {% else %}
 
-	      <li class="nav-item">
-	        <a  class="nav-link" href="{% url 'login' %}">Login</a>
+	      <li >
+	        <a   href="{% url 'login' %}">Login</a>
 	      </li>		
-	      <li class="nav-item">
-	        <a class="nav-link" href="{% url 'alumni_signup' %}">Alumni-Signup</a>
+	      <li >
+	        <a  href="{% url 'alumni_signup' %}">Alumni-Signup</a>
 	      </li>		    
-	      <li class="nav-item">
-	        <a class="nav-link" href="{% url 'college_signup' %}">College-Signup</a>
+	      <li >
+	        <a  href="{% url 'college_signup' %}">College-Signup</a>
 	      </li>		                    
 	      {% endif %}
 	    </ul>
-	  </div>
+    </div>
+    </div>
 	</nav>  	
 </header>
   <div>
