@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
+
 class AlumniSignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
@@ -13,6 +14,7 @@ class AlumniSignupForm(UserCreationForm):
             user.save()
         return user
 
+
 class CollegeSignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
@@ -20,15 +22,25 @@ class CollegeSignupForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_college = True
-        Verified = True
+        # Verified = True
         if commit:
             user.save()
-        return user        
+        return user
+
+
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = User
-        
-        fields=["username","first_name","last_name","email","College","About","Work","Year_Joined","Branch","Image"]
 
-
-      
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "College",
+            "About",
+            "Work",
+            "Year_Joined",
+            "Branch",
+            "Image"
+            ]

@@ -1,10 +1,7 @@
 from django.shortcuts import redirect, render
-from django.views.generic import TemplateView
-from django.views.generic import CreateView,UpdateView
+from django.views.generic import CreateView
 from .models import User
-from django.urls import reverse
-from django.urls import reverse_lazy
-from .forms import AlumniSignupForm,RegistrationForm
+from .forms import AlumniSignupForm, RegistrationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
@@ -23,6 +20,7 @@ class SignupView(CreateView):
         login(self.request, user)
         return redirect('alumni-profile')
 
+
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -37,4 +35,4 @@ def profile(request):
     context = {
         'form': u_form
     }
-    return render(request,'registration.html',context)
+    return render(request, 'registration.html', context)

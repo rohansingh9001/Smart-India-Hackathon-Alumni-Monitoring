@@ -39,11 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'crispy_forms',
-
-    'newApp',    
+    'newApp',
 ]
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'newApp/media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'newApp/media')
 MEDIA_URL = '/media/'
 
 MIDDLEWARE = [
@@ -61,7 +60,10 @@ ROOT_URLCONF = 'new.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates','newApp')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'newApp')
+                ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
