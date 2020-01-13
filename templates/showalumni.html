@@ -5,7 +5,7 @@
         {{ filter.form|crispy }}
         <button type="submit">Search</button>
     </form>
-    <hr> {% for p in filter.qs %} {% if p.Verified %}
+    <hr> {% for p in filter.qs %} {% if p.Verified and p.is_alumni %}
     <a href="{% url 'alumni-detail' p.id %}" style="color: black">
         <div class="card testimonial-card float-left mr-3 mb-3 ml-3">
             <div class="card-up indigo lighten-1"></div>
