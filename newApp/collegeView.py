@@ -6,7 +6,8 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
 from django.urls import reverse
-
+from .decorators import college_required
+from django.utils.decorators import method_decorator
 
 def profile(request):
     return render(request, 'newApp/college/profile.html')
@@ -26,8 +27,8 @@ class SignupView(CreateView):
         login(self.request, user)
         return redirect('home')
 
-
-class PendingQueryView(ListView):
+@method_decorator([college_required], name='dispatch')
+class PendingQueryView(LoginRequiredMixin,ListView):
     def get_queryset(self):
         return User.objects.filter(
             Verified=False,
