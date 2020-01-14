@@ -6,13 +6,13 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
 from django.urls import reverse
-from .decorators import college_required
+from .decorators import college_required,admin_required
 from django.utils.decorators import method_decorator
 
 def profile(request):
     return render(request, 'newApp/college/profile.html')
 
-
+@method_decorator([admin_required], name='dispatch')
 class SignupView(CreateView):
     model = User
     form_class = CollegeSignupForm
