@@ -1,7 +1,6 @@
 {% extends "base.html" %} {%load static%} {% load crispy_forms_tags %} {% block content %}
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <br>
-<div class="container">
+<div class="container jumbotron">
     <div class="row">
         <div class="col-sm-3 ">
             <form method="get">
@@ -14,17 +13,16 @@
             {% if p.Verified and p.is_alumni %}
             <hr>
             <a href="{% url 'alumni-detail' p.id %}" style="color: black">
-                <div class="mx-auto" style="width:500px">
+                <div class="mx-auto  style="width:500px">
                         <div class="row">
                             <div class="avatar mx-auto white col-sm-5">
-                                <img src="{{ p.Image.url }}" style="height: 150px;width: 200px">
+                                <img src="{{ p.Image.url }}" style="height: 150px;width: 200px" class="rounded mx-auto d-block">
                             </div>
-                            <div class="col-sm-7">
-                                <h4 class="card-title">{{p.username}}</h4>
+                            <div class="col-sm-6 ">
+                                <h4 class="card-title text-danger">{{p.username}}</h4>
                                 <hr>
-                                <div class="desc">College - {{p.College}}</div>
-                                <div class="desc">Branch - {{p.Branch}}</div>
-                                <div class="desc">Joining Year - {{p.Year_Joined}}</div>
+                                <p class="text-info ">College - {{p.College}} ({{p.Branch}})</p>
+                                <p class="text-info">Joining Year - {{p.Year_Joined}}</p>
                             </div>
                         </div>
                     </div>
@@ -43,4 +41,5 @@
         </div>
     </div>
     <br>
+  </div>
     {%endblock%}
