@@ -10,7 +10,7 @@ urlpatterns = [
         name='home'
         ),
     path(
-        'alumni',
+        'alumniprofile/<int:pk>/',
         alumniView.profile,
         name="alumni-profile"
         ),
