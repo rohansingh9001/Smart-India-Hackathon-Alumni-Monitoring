@@ -39,3 +39,4 @@ class User(AbstractUser):
             output_size = (150, 150)
             img.thumbnail(output_size)
             img.save(self.Image.path)
+          
