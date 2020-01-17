@@ -50,5 +50,6 @@ class CollegeDetailsForm(forms.ModelForm):
         model = User
 
         fields = [
-            "College"
+            "College",
+            "Image"
         ]
