@@ -44,3 +44,12 @@ class RegistrationForm(forms.ModelForm):
             "Branch",
             "Image"
             ]
+
+class CollegeDetailsForm(forms.ModelForm):
+    class Meta:
+        model = User
+
+        fields = [
+            "College",
+            "Image"
+        ]

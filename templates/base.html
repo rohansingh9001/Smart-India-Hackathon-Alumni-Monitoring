@@ -34,58 +34,60 @@
     <header class="header-section">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark site-navbar">
             <a class="navbar-brand site-logo" href="{% url 'home' %}">
-				<h2><span>Alumni</span>Tracker</h2>
+                <h2><span>Alumni</span>Tracker</h2>
             </a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Feature A</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Colleges</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'show-alumni' %}">Alumni</a>
-                        </li>
-                        {% if request.user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                        </li>
-                        {%if request.user.is_alumni %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'alumni-profile' request.user.id%}">Profile</a>
-                        </li>
-                        {%else%}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'pending-query' %}">Pending Queries</a>
-                        </li>
-                        {%endif%}
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'alumni_signup' %}">Alumni-Signup</a>
-                        </li>
-                        {% endif %}
-                        {% if request.user.is_authenticated and request.user.is_superuser %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'college_signup' %}">College-Signup</a>
-                        </li>
-                        {% endif %}
-                    </ul>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Feature A</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Colleges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'show-alumni' %}">Alumni</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {%if request.user.is_alumni %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'alumni-profile' request.user.id%}">Profile</a>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pending-query' %}">Pending Queries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'college-profile' request.user.id %}">Profile</a>
+                    </li>
+                    {%endif%}
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'alumni_signup' %}">Alumni-Signup</a>
+                    </li>
+                    {% endif %}
+                    {% if request.user.is_authenticated and request.user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'college_signup' %}">College-Signup</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </nav>
     </header>
-        {% block content %}
-        {% endblock %}
+    {% block content %}
+    {% endblock %}
     <footer id="footer">
         <div class="footer-top">
             <div class="container">
@@ -133,12 +135,11 @@
     <script src="{%static 'base/header/js/jquery-3.2.1.min.js' %}"></script>
     <script src="{%static 'base/header/js/bootstrap.min.js' %}"></script>
     <script src="{%static 'base/header/js/owl.carousel.min.js' %}"></script>
-    <script src="{%static 'base/header/js/main.js' %}"></script>            
+    <script src="{%static 'base/header/js/main.js' %}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

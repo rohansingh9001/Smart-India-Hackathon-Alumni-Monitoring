@@ -1,16 +1,15 @@
 from django.shortcuts import redirect, render
 from django.views.generic import CreateView, ListView
 from .models import User
-from .forms import CollegeSignupForm
+from .forms import CollegeSignupForm,RegistrationForm,CollegeDetailsForm
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
 from django.urls import reverse
 from .decorators import college_required,admin_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
-def profile(request):
-    return render(request, 'newApp/college/profile.html')
 
 @method_decorator([admin_required], name='dispatch')
 class SignupView(CreateView):
@@ -25,7 +24,24 @@ class SignupView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('home')
+        return redirect('college-profile',self.request.user.id)
+
+@login_required
+@college_required
+def profile(request,pk):
+    if request.method == 'POST':
+        u_form = CollegeDetailsForm(request.POST,request.FILES, instance=request.user)
+        if u_form.is_valid():
+            u_form.save()
+            return redirect('college-profile',pk)
+
+    else:
+        u_form = CollegeDetailsForm(instance=request.user)
+
+    context = {
+        'form': u_form
+    }
+    return render(request, 'collegeprofile.html', context)
 
 @method_decorator([college_required], name='dispatch')
 class PendingQueryView(LoginRequiredMixin,ListView):
@@ -33,7 +49,7 @@ class PendingQueryView(LoginRequiredMixin,ListView):
         return User.objects.filter(
             Verified=False,
             is_alumni=True,
-            College=self.request.user.username)
+            College=self.request.user.College)
     template_name = "pendingalumni.html"
     context_object_name = 'alumnis'
     ordering = ['Year_Joined']
