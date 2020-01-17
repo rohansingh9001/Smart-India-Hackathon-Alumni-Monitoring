@@ -8,6 +8,11 @@ urlpatterns = [
         '',
         views.home,
         name='home'
+        ),    
+    path(
+        'collegeprofile/<int:pk>/',
+        collegeView.profile,
+        name="college-profile"
         ),
     path(
         'alumniprofile/<int:pk>/',

@@ -1,16 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from PIL import Image
+from django.contrib.auth.models import  User
 
 COLLEGE_CHOICES = (
-    ('FIRST', 'FIRST'),
-    ('SECOND', 'SECOND'),
-    ('THIRD', 'THIRD'),
-    ('FOURTH', 'FOURTH'),
-    ('FIFTH', 'FIFTH'),
-    ('SIXTH', 'SIXTH'),
-    ('SEVENTH', 'SEVENTH'),
-    ('EIGHTH', 'EIGHTH'),
+    ('Indian Institute Of Technology, Jodhpur', 'Indian Institute Of Technology, Jodhpur'),
+    ('Indian Institute Of Technology, Indore', 'Indian Institute Of Technology, Indore'),
+    ('Indian Institute Of Technology, Mumbai', 'Indian Institute Of Technology, Mumbai'),
+    ('Indian Institute Of Technology, Palakkad', 'Indian Institute Of Technology, Palakkad'),
+    ('Indian Institute Of Technology, Dhanbad', 'Indian Institute Of Technology, Dhanbad'),
+    ('Indian Institute Of Technology, Delhi', 'Indian Institute Of Technology, Delhi'),
+    ('Indian Institute Of Technology, Kanpur', 'Indian Institute Of Technology, Kanpur'),
+    ('Indian Institute Of Technology, Kharagpur', 'Indian Institute Of Technology, Kharagpur'),
 )
 
 
