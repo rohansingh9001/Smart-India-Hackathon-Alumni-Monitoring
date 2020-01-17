@@ -51,5 +51,6 @@ class CollegeDetailsForm(forms.ModelForm):
 
         fields = [
             "College",
-            "Image"
+            "Image",
+            "About"
         ]
