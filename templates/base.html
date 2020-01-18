@@ -30,9 +30,9 @@
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
 </head>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    <header class="header-section">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark site-navbar">
+<body>
+    <header class="header-section" style="margin-bottom: 76px">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark site-navbar fixed-top">
             <a class="navbar-brand site-logo" href="{% url 'home' %}">
                 <h2><span>Alumni</span>Tracker</h2>
             </a>
@@ -61,7 +61,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'alumni-profile' request.user.id%}">Profile</a>
                     </li>
-                    {%else%}
+                    {%elif request.user.is_college %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'pending-query' %}">Pending Queries</a>
                     </li>
@@ -140,6 +140,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
