@@ -20,9 +20,19 @@ urlpatterns = [
         name="alumni-profile"
         ),
     path(
-        'showalumni',
+        'showalumni/',
         views.AlumniListView,
         name="show-alumni"
+        ),
+    path(
+        'showcolleges/',
+        views.CollegeListView,
+        name='show-college'
+        ),
+    path(
+        'college/<int:pk>/',
+        views.CollegeDetailView.as_view(),
+        name='college-detail'
         ),
     path(
         'alumni/<int:pk>/',

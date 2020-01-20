@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{%block content%}
+<div class="container ">
+    <br>
+    <div class="card testimonial-card mr-3 mb-3 ml-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{{ college.Image.url }}" style="height: 200px;width: 250px">
+                </div>
+                <div class="col-sm-8">
+                    <h2 class="card-title text-danger">{{college.College}}</h2>
+                    <br>
+                    <a href="{{ college.Branch }}">Click Here To Know More.</a>
+                </div>
+            </div>
+            <hr>
+            <h6>{{college.About|safe|linebreaks}}</h6>
+        </div>
+    </div>
+</div>
+</div>
+{%endblock%}

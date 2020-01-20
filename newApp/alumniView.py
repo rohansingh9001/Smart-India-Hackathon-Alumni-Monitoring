@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .decorators import alumni_required
 
-class SignupView(CreateView):
+class SignupView(CreateView):   
     model = User
     form_class = AlumniSignupForm
     template_name = 'registration/signup_form.html'
