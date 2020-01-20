@@ -13,8 +13,6 @@ COLLEGE_CHOICES = (
     ('Indian Institute Of Technology, Kanpur', 'Indian Institute Of Technology, Kanpur'),
     ('Indian Institute Of Technology, Kharagpur', 'Indian Institute Of Technology, Kharagpur'),
 )
-
-
 class User(AbstractUser):
     is_alumni = models.BooleanField(default=False)
     is_college = models.BooleanField(default=False)

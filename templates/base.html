@@ -21,9 +21,7 @@
     <link href="{% static 'base/lib/animate/animate.min.css'%}" rel="stylesheet">
     <link href="{% static 'base/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
     <link href="{% static 'base/lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
-    <link href="{% static 'lib/lightbox/css/lightbox.min.css'%}" rel="stylesheet">
     <link href="{% static 'base/css/style.css'%}" rel="stylesheet">
-    <link href="{% static 'base/header/css/bootstrap.min' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'base/header/css/style.css' %}" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
@@ -48,7 +46,7 @@
                         <a class="nav-link" href="#">Feature A</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Colleges</a>
+                        <a class="nav-link" href="{% url 'show-college' %}">Colleges</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'show-alumni' %}">Alumni</a>
