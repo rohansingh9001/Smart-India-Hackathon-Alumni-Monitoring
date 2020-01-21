@@ -6,12 +6,13 @@ from django.views.generic import View
 from .filters import AlumniFilter
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
 def home(request):
     return render(request, 'home.html')
 
 
 def AlumniListView(request):
-    total = User.objects.filter(Verified=True).filter(is_alumni=True).all()
+    total = User.objects.filter(Verified=True).filter(is_college=False).all()
     alfilter = AlumniFilter(request.GET, queryset=total)
     template_name = 'showalumni.html'
     paginator = Paginator(alfilter.qs, 5)
@@ -23,6 +24,7 @@ def AlumniListView(request):
     except EmptyPage:
         page_obj = paginator.page(paginator.num_pages)
     return render(request, template_name, {'filter': alfilter, 'page_obj': page_obj})
+
 
 def CollegeListView(request):
     total = User.objects.filter(is_college=True).all()
@@ -37,20 +39,16 @@ def CollegeListView(request):
         page_obj = paginator.page(paginator.num_pages)
     return render(request, template_name, {'filter': total, 'page_obj': page_obj})
 
+
 class CollegeDetailView(View):
     def get(self, request, *args, **kwargs):
-        college = get_object_or_404(User, pk=kwargs['pk'])        
+        college = get_object_or_404(User, pk=kwargs['pk'])
         context = {'college': college}
         return render(request, "college.html", context)
+
 
 class AlumniDetailView(View):
     def get(self, request, *args, **kwargs):
         alumni = get_object_or_404(User, pk=kwargs['pk'])
         context = {'alumni': alumni}
         return render(request, "alumni.html", context)
-
-
-
- 
-    
-    
