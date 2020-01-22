@@ -8,7 +8,7 @@
   
   Install the dependencies in requirements and install the following repositories using python package manager PyPi or "pip"
   
-  Alternatively with python installed and added to path you can execute the RUNSERVER.bat batch file for windows.
+  Alternatively with python installed and added to path you can execute the SETUP.bat batch file for windows.
   This will install all the libraries and set up the server.
   
   ### Starting the server.
@@ -22,6 +22,7 @@
   Execute the RUNBROWSER.bat file and the website will be opened for you on your default browser.
   
   ### Running order to start the websites (For non-experienced users)
+    run SETUP.bat (required only once per computer once installed skip to step 2)
     execute RUNSERVER.bat 
     once the server is set up,
     execute RUNBROWSER.bat
