@@ -3,7 +3,7 @@
 {% block content %}
 {% load templatetags %}
 {% if alumnis %}
-<div class="container jumbotron">
+<div class="container jumbotron" style="margin-bottom:200px;">
     <div class="col-lg-8 col-md-10 mx-auto">
         {% for p in alumnis %}
         <hr>
@@ -23,12 +23,6 @@
             </div>
         </a>
         {%endfor%}
-        {%else%}
-        <div class="container">
-            <div style="margin:150px">
-                <h3>No Pending Alumni Queries!</h3>
-            </div>
-        </div>
         <div class="pagination" style="margin-left: 100px;margin-top: 50px">
             <span>
                 {% if page_obj.has_previous %}
@@ -46,5 +40,9 @@
         </div>
     </div>
 </div>
+        {%else%}
+        <div class="container" style="margin-bottom:650px;">
+                <h3 style="padding-top:100px">No Pending Alumni Queries!</h3>
+        </div>
 {% endif %}
 {%endblock%}

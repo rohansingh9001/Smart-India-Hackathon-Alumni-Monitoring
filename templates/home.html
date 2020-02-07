@@ -12,11 +12,15 @@
                     <div class="carousel-background"><img src="{% static 'base/img/intro-carousel/1.jpg'%}" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
-                            <h2>Welcome to the Alumni Social Network</h2>
-                            <p>
-                                Be a part of a network comprosing of {number of alumni} from {number of colleges}. Sign up now and be a part of the massive community of fellow alumni an colleges.
+                            <h2 >Welcome to the Alumni Social Network</h2>
+                            <p style="font-size:25px">
+                                Be a part of a network comprosing of {{no_of_alumnis}} alumnis from {{no_of_colleges}} Colleges. Sign up now and be a part of the massive community of fellow alumni an colleges.
                             </p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'alumni-profile' request.user.id%}" class="btn-get-started scrollto">Your Profile</a>
+                            {% else %}
+                            <a href="{% url 'alumni_signup' %}" class="btn-get-started scrollto">Register Yourself</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -26,10 +30,14 @@
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2>Stay in contact of your College</h2>
-                            <p>
+                            <p style="font-size:25px">
                                 Discover what your college is up to. Stay one click away from your Alma Matter.
                             </p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                            {% if request.user.is_authenticated %}
+                            <a href="#" class="btn-get-started scrollto">Current Events</a>
+                            {% else %}
+                            <a href="{% url 'alumni_signup' %}" class="btn-get-started scrollto">Register Yourself</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -39,10 +47,14 @@
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2>Find old batchmates.</h2>
-                            <p>
+                            <p style="font-size:25px">
                                 Miss your batchmates? Can't find their contact number. Find it right here. All your friends can be found right here.
                             </p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                            {% if request.user.is_authenticated %}
+                            <a href="#" class="btn-get-started scrollto">Chat Section</a>
+                            {% else %}
+                            <a href="{% url 'alumni_signup' %}" class="btn-get-started scrollto">Register Yourself</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -52,10 +64,14 @@
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2>Officially Supported</h2>
-                            <p>
+                            <p style="font-size:25px">
                                 This network is officially supported, and built for you through an initiative from Govt. of Goa.
                             </p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                            {% if request.user.is_authenticated %}
+                            <a href="#" class="btn-get-started scrollto">Donate To Your College</a>
+                            {% else %}
+                            <a href="{% url 'alumni_signup' %}" class="btn-get-started scrollto">Register Yourself</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -65,10 +81,14 @@
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2>Participate in events from your college</h2>
-                            <p>
+                            <p style="font-size:25px">
                                 Monitor events in your college, Participate in events, interact with juniors.
                             </p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                            {% if request.user.is_authenticated %}
+                            <a href="#" class="btn-get-started scrollto">Current Events</a>
+                            {% else %}
+                            <a href="{% url 'alumni_signup' %}" class="btn-get-started scrollto">Register Yourself</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
