@@ -43,7 +43,7 @@
                         <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Feature A</a>
+                        <a class="nav-link" href="#">Current Events</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'show-college' %}">Colleges</a>
@@ -55,7 +55,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
-                    {%if request.user.is_alumni %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Alumni Connect Chat</a>
+                    </li>
+                    {%if not request.user.is_college %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'alumni-profile' request.user.id%}">Profile</a>
                     </li>
@@ -90,43 +93,27 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>Remember</h3>
-                        <p>Remeber is a place where you can connect with your seniors. Havetea with them, revive your old memories and the fun you had in the college. And not forgetting, taunting the faculty</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
-                            <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
-                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
-                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-6 footer-contact">
+                    <div class="col-sm-6 footer-contact">
                         <h4>Contact Us</h4>
                         <p>
-                            IIT Jodhpur<br>
-                            Nagaur Road, Karwad, Jodhpur<br>
-                            Rajasthan, India <br>
                             <strong>Phone:</strong> +1 5589 55488 55<br>
                             <strong>Email:</strong> tarun_tomar@gmail.com<br>
                         </p>
-                        <div class="social-links">
+                        </div>
+                        <div class="social-links col-sm-6 ">
                             <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                             <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                             <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
                             <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
                             <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong>Remember</strong>. All Rights Reserved
+                &copy; Copyright <strong>Government of GOA</strong>. All Rights Reserved
             </div>
         </div>
     </footer>
